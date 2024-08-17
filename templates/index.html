@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIFAR-10 Image Classification</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffd500;
+        }
+        .file-upload {
+            margin-bottom: 20px;
+        }
+        .header {
+            margin-bottom: 30px;
+        }
+        .preview {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header text-center">
+            <h1>CIFAR-10 Image Classification</h1>
+            <p class="lead">Upload an image and let our model classify it.</p>
+        </header>
+
+        <form class="text-center" action='/' method="post" enctype="multipart/form-data">
+            <div class="file-upload">
+                <input class="form-control" type="file" name="imagefile" accept="image/*" required>
+            </div>
+            <button class="btn btn-primary" type="submit">Classify</button>
+        </form>
+
+        {% if prediction %}
+            <div class="preview text-center">
+                <img src="{{ image_url }}" alt="Uploaded Image">
+            </div>
+            <div class="result text-center">
+                Image is classified as: <strong>{{ prediction }}</strong>
+            </div>
+            
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+G9zRScjj49jI0ANj+2p1yTP6X0CFJ3JcbtV7w5G" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-cmTSxSTL4xBt2kA8LfD0b5n7/N8HB5GUBDGrxfN8xom/j+jD8Kx5x41ITJ+0U8z6U" crossorigin="anonymous"></script>
+</body>
+</html>
